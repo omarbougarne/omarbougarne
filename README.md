@@ -20,14 +20,4 @@ I’m currently working on Mastering Mern stack
 
 ### Badges
 
-<b>My GitHub Stats</b>
-
-[![Omar's GitHub stats](https://github-readme-stats.vercel.app/api?username=omarbougarne)](https://github.com/omarbougarne/github-readme-stats)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=omarbougarne&layout=compact&langs_count=8&hide=css,scss,zig,html)
-<b>Top Repositories</b>
-
-<div width="100%" align="center"><a href="https://github.com/omarbougarne/sportpal" align="left"><img align="left" width="45%" src="https://github-readme-stats.vercel.app/api/pin/?username=omarbougarne&repo=sportpal&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=1c1917&hide_border=true&locale=en" /></a><a href="https://github.com/omarbougarne/sportpal-mobile" align="right"><img align="right" width="45%" src="https://github-readme-stats.vercel.app/api/pin/?username=omarbougarne&repo=sportpal-mobile&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=1c1917&hide_border=true&locale=en" /></a></div><br /><br /><br /><br /><br /><br /><br />
-
-<br /><br /><br /><br /><br />
-
 <div width="100%" align="center"><a href="https://github.com/omarbougarne/pfa-YC-anime-db" align="left"><img align="left" width="45%" src="https://github-readme-stats.vercel.app/api/pin/?username=omarbougarne&repo=pfa-YC-anime-db&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=1c1917&hide_border=true&locale=en" /></a></div>
