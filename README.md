@@ -1,3 +1,4 @@
+```
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    ┌─ SYSTEM INFO ─────────────────────┐
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    │ ◉ USER:    Omar Bougarne          │
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    │ ⚡ ROLE:    Fullstack Developer    │
@@ -13,6 +14,9 @@
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    │ ★ STARS:   <!-- GITHUB_STARS -->  │
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    │ ◈ COMMITS: <!-- GITHUB_COMMITS -->│
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    └───────────────────────────────────┘
+
+[JS][React][Node.js] - Updated: <!-- LAST_UPDATED -->
+```
 
 [JS][React][Node.js] - Updated: <!-- LAST_UPDATED -->
 
