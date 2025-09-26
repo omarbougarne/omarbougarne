@@ -2,32 +2,74 @@ name: Update README
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs at midnight every day
-  workflow_dispatch:  # Allows manual triggering
+    - cron: '0 0 * * *' # Daily at midnight UTC
+  workflow_dispatch: # Allows manual trigger
 
 jobs:
-  update-readme:
+  update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Update README with GitHub stats
+        uses: actions/github-script@v6
         with:
-          node-version: '18'
-          
-      - name: Install dependencies
-        run: npm install axios
-
-      - name: Update README
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const username = 'omarbougarne'; // Replace with your username
+            
+            try {
+              // Get user data
+              const { data: user } = await github.rest.users.getByUsername({
+                username: username
+              });
+              
+              // Get all repositories
+              const { data: repos } = await github.rest.repos.listForUser({
+                username: username,
+                per_page: 100,
+                type: 'public'
+              });
+              
+              // Calculate total stars
+              const totalStars = repos.reduce((acc, repo) => acc + repo.stargazers_count, 0);
+              
+              // Get commit count (approximate from events)
+              const { data: events } = await github.rest.activity.listPublicEventsForUser({
+                username: username,
+                per_page: 100
+              });
+              
+              const commitEvents = events.filter(event => event.type === 'PushEvent');
+              const recentCommits = commitEvents.length;
+              
+              // Read current README
+              const fs = require('fs');
+              let readme = fs.readFileSync('README.md', 'utf8');
+              
+              // Replace placeholders
+              readme = readme.replace('<!-- GITHUB_REPOS -->', user.public_repos.toString());
+              readme = readme.replace('<!-- GITHUB_STARS -->', totalStars.toString());
+              readme = readme.replace('<!-- GITHUB_COMMITS -->', `${recentCommits}+`);
+              readme = readme.replace('<!-- LAST_UPDATED -->', new Date().toISOString().split('T')[0]);
+              
+              // Write back to README
+              fs.writeFileSync('README.md', readme);
+              
+              console.log(`✅ Updated stats: ${user.public_repos} repos, ${totalStars} stars`);
+              
+            } catch (error) {
+              console.error('Error updating README:', error);
+              throw error;
+            }
+            
+      - name: Commit and push changes
         run: |
-          node .github/scripts/update-readme.js
-          
-      - name: Commit and push if changed
-        run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add README.md
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update README with latest GitHub data" && git push)
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🤖 Update GitHub stats"
+            git push
+          fi
